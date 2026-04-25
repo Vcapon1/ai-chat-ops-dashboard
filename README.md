@@ -4,53 +4,55 @@ AI-powered operations dashboard for conversations, lead management, and workflow
 
 ## Overview
 
-This project is a customer operations dashboard designed to help teams manage conversations, leads, campaigns, and automated workflows in one place.
+AI Chat Ops Dashboard is a product-oriented interface built to support customer conversations, lead handling, assistant configuration, and operational workflows in one place.
 
-It was built with a practical product mindset: reduce manual work, organize inbound demand, and create a more efficient interface for AI-assisted operations.
+The system was designed with a practical applied-AI mindset: organize inbound demand, structure assistant behavior, improve handoff quality, and connect customer interactions with downstream business actions.
+
+## Screenshots
+
+### Conversations
+![Conversations](docs/screenshots/conversations.png)
+
+### Leads
+![Leads](docs/screenshots/leads.png)
+
+### SDR Configuration
+![SDR Configuration](docs/screenshots/sdr-config.png)
 
 ## What this project includes
 
-- Conversation management
-- Lead creation and handling
-- Campaign support
-- Operational dashboard interface
-- Workflow-oriented structure
-- AI-ready product foundation
+- Conversation management interface
+- Lead handling and qualification flow
+- CRM handoff support
+- Assistant behavior configuration
+- SDR instruction management
+- Workflow-oriented operational dashboard
+- Applied AI product structure
 
 ## Why it matters
 
-Most teams do not need generic AI demos.
+This project reflects a practical product engineering approach for AI-assisted operations.
 
-They need internal tools that help them:
+Instead of treating AI as a generic chat layer, the product focuses on real business workflows:
 - manage inbound conversations
-- organize leads
-- reduce repetitive work
-- support operational workflows
-- create a better layer between business operations and automation
-
-This project reflects that approach.
+- configure assistant behavior
+- organize lead flow
+- support team operations
+- connect chat interactions to business outcomes
 
 ## Tech stack
 
-- TypeScript
-- React
-- Vite
-- Tailwind CSS
 - PHP
-- Operational workflow structure for AI-assisted products
+- TypeScript
+- Operational dashboard architecture
+- AI-assisted workflow design
+- CRM-oriented lead flow
 
 ## Current status
 
 Public portfolio version of a real operations product.
 
-This repository is being reorganized to better represent the product, interface, and engineering decisions behind the project.
-
-## Next steps
-
-- Add screenshots
-- Improve documentation
-- Refine public structure
-- Document architecture and workflows
+This repository is being organized to better represent the product, interface, and engineering decisions behind the system.
 
 ## Author
 
