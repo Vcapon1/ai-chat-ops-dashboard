@@ -1,71 +1,58 @@
+# AI Chat Ops Dashboard
 
-# Welcome to your Lovable project - Mar.IA Intelligence
+AI-powered operations dashboard for conversations, lead management, and workflow automation.
 
-## Project info
+## Overview
 
-**URL**: https://lovable.dev/projects/a3a0e6be-77b0-4186-97f3-461ad599731e
+This project is a customer operations dashboard designed to help teams manage conversations, leads, campaigns, and automated workflows in one place.
 
-## How to edit this code
+It was built with a practical product mindset: reduce manual work, organize inbound demand, and create a more efficient interface for AI-assisted operations.
 
-There are several ways of editing your application.
+## What this project includes
 
-**Use Lovable**
+- Conversation management
+- Lead creation and handling
+- Campaign support
+- Operational dashboard interface
+- Workflow-oriented structure
+- AI-ready product foundation
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/a3a0e6be-77b0-4186-97f3-461ad599731e) and start prompting.
+## Why it matters
 
-Changes made via Lovable will be committed automatically to this repo.
+Most teams do not need generic AI demos.
 
-**Use your preferred IDE**
+They need internal tools that help them:
+- manage inbound conversations
+- organize leads
+- reduce repetitive work
+- support operational workflows
+- create a better layer between business operations and automation
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+This project reflects that approach.
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+## Tech stack
 
-Follow these steps:
-
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
-
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
-
-# Step 3: Install the necessary dependencies.
-npm i
-
-# Step 4: Start the development server with auto-reloading and an instant preview.
-npm run dev
-```
-
-**Edit a file directly in GitHub**
-
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
-
-**Use GitHub Codespaces**
-
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
-
-## What technologies are used for this project?
-
-This project is built with:
-
-- Vite
 - TypeScript
 - React
-- shadcn-ui
+- Vite
 - Tailwind CSS
-- PHP (for backend functionality)
+- PHP
+- Operational workflow structure for AI-assisted products
 
-## How can I deploy this project?
+## Current status
 
-Simply open [Lovable](https://lovable.dev/projects/a3a0e6be-77b0-4186-97f3-461ad599731e) and click on Share -> Publish.
+Public portfolio version of a real operations product.
 
-## I want to use a custom domain - is that possible?
+This repository is being reorganized to better represent the product, interface, and engineering decisions behind the project.
 
-We don't support custom domains (yet). If you want to deploy your project under your own domain then we recommend using Netlify. Visit our docs for more details: [Custom domains](https://docs.lovable.dev/tips-tricks/custom-domain/)
+## Next steps
+
+- Add screenshots
+- Improve documentation
+- Refine public structure
+- Document architecture and workflows
+
+## Author
+
+Vitor Caponi  
+Product Engineer building AI systems, automation workflows, and SaaS products.
