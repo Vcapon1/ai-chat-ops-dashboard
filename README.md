@@ -1,64 +1,71 @@
-# ai-chat-ops-dashboard
-# AI Chat Ops Dashboard
 
-AI-powered operations dashboard for conversations, lead management, and workflow automation.
+# Welcome to your Lovable project - Mar.IA Intelligence
 
-## Overview
+## Project info
 
-This project is a customer operations dashboard designed to help teams manage conversations, leads, campaigns, and automated workflows in one place.
+**URL**: https://lovable.dev/projects/a3a0e6be-77b0-4186-97f3-461ad599731e
 
-It was built with a practical product mindset: reduce manual work, organize inbound demand, and create a more efficient interface for AI-assisted operations.
+## How to edit this code
 
-## Why this project matters
+There are several ways of editing your application.
 
-Most companies do not need “AI for the sake of AI”.
+**Use Lovable**
 
-They need better operational tools:
-- manage conversations faster
-- organize leads more clearly
-- support campaigns and follow-ups
-- connect workflows across systems
-- reduce repetitive manual tasks
+Simply visit the [Lovable Project](https://lovable.dev/projects/a3a0e6be-77b0-4186-97f3-461ad599731e) and start prompting.
 
-This project reflects that approach.
+Changes made via Lovable will be committed automatically to this repo.
 
-## Core capabilities
+**Use your preferred IDE**
 
-- Conversation management
-- Lead handling and creation
-- Campaign support
-- Operational dashboard interface
-- Workflow-oriented structure
-- AI-ready product foundation
+If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
 
-## Product thinking behind it
+The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
 
-This is not an academic AI demo.
+Follow these steps:
 
-It is a product-oriented dashboard designed around real operational use cases, where AI can support decision-making, communication flows, and execution efficiency.
+```sh
+# Step 1: Clone the repository using the project's Git URL.
+git clone <YOUR_GIT_URL>
 
-## Tech direction
+# Step 2: Navigate to the project directory.
+cd <YOUR_PROJECT_NAME>
 
-This project is part of a broader applied AI and automation approach focused on:
-- AI-assisted operations
-- business workflow automation
-- productized internal tools
-- real-world SaaS interfaces
+# Step 3: Install the necessary dependencies.
+npm i
 
-## Status
+# Step 4: Start the development server with auto-reloading and an instant preview.
+npm run dev
+```
 
-Work in progress / public case study version.
+**Edit a file directly in GitHub**
 
-This repository is being reorganized as a public portfolio project to better represent the product and engineering decisions behind it.
+- Navigate to the desired file(s).
+- Click the "Edit" button (pencil icon) at the top right of the file view.
+- Make your changes and commit the changes.
 
-## Next steps
+**Use GitHub Codespaces**
 
-- Improve project structure and documentation
-- Add screenshots and interface preview
-- Document architecture and workflows
-- Publish a cleaner public version of the main modules
+- Navigate to the main page of your repository.
+- Click on the "Code" button (green button) near the top right.
+- Select the "Codespaces" tab.
+- Click on "New codespace" to launch a new Codespace environment.
+- Edit files directly within the Codespace and commit and push your changes once you're done.
 
-## Author
+## What technologies are used for this project?
 
-Vitor Caponi  
-Product Engineer focused on AI systems, automation workflows, and SaaS products.
+This project is built with:
+
+- Vite
+- TypeScript
+- React
+- shadcn-ui
+- Tailwind CSS
+- PHP (for backend functionality)
+
+## How can I deploy this project?
+
+Simply open [Lovable](https://lovable.dev/projects/a3a0e6be-77b0-4186-97f3-461ad599731e) and click on Share -> Publish.
+
+## I want to use a custom domain - is that possible?
+
+We don't support custom domains (yet). If you want to deploy your project under your own domain then we recommend using Netlify. Visit our docs for more details: [Custom domains](https://docs.lovable.dev/tips-tricks/custom-domain/)

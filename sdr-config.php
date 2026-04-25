@@ -1,0 +1,182 @@
+
+<?php
+session_start();
+require_once 'includes/db.php';
+require_once 'includes/sdr/database_operations.php';
+require_once 'includes/sdr/table_view.php';
+require_once 'includes/sdr/add_form.php';
+
+if (!isset($_SESSION['user_id'])) {
+    header('Location: login.php');
+    exit;
+}
+
+// Get selected intention from GET parameters
+$selectedIntencao = isset($_GET['intencao']) ? $_GET['intencao'] : '0';
+
+// Processar requisições POST
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    if (isset($_POST['delete']) && isset($_POST['id'])) {
+        if (deleteFase($pdo, $_POST['id'])) {
+            header('Location: sdr-config.php' . ($selectedIntencao != '0' ? '?intencao=' . $selectedIntencao : ''));
+            exit;
+        }
+    }
+    
+    if (isset($_POST['edit'])) {
+        if (editFase($pdo, $_POST['id'], $_POST['titulo'], $_POST['prompt'], $_POST['referencia'], $_POST['intencao'] ?? 0)) {
+            header('Location: sdr-config.php' . ($selectedIntencao != '0' ? '?intencao=' . $selectedIntencao : ''));
+            exit;
+        }
+    }
+    
+    if (isset($_POST['move'])) {
+        if (moveFase($pdo, $_POST['id'], $_POST['direction'])) {
+            header('Location: sdr-config.php' . ($selectedIntencao != '0' ? '?intencao=' . $selectedIntencao : ''));
+            exit;
+        }
+    }
+    
+    if (isset($_POST['add'])) {
+        if (addFase($pdo, $_POST['titulo'], $_POST['prompt'], $_POST['referencia'], $_POST['intencao'] ?? 0)) {
+            header('Location: sdr-config.php' . ($selectedIntencao != '0' ? '?intencao=' . $selectedIntencao : ''));
+            exit;
+        }
+    }
+}
+
+// Buscar instruções com filtro de intenção
+$result = getFases($pdo, $selectedIntencao);
+
+require_once 'includes/header.php';
+?>
+
+<div class="flex min-h-screen bg-gray-900">
+    <?php require_once 'includes/menu.php'; ?>
+    
+    <div class="flex-1 p-8">
+        <div class="max-w-4xl mx-auto">
+            <div class="flex items-center justify-between mb-8">
+                <h1 class="text-3xl font-bold text-white">Configuração de SDR</h1>
+                <?php 
+                require_once 'includes/settings/navigation_buttons.php';
+                renderNavigationButtons('sdr'); 
+                ?>
+            </div>
+            
+            <!-- Filtro de Intenção -->
+            <?php renderIntencaoFilter($pdo, $selectedIntencao); ?>
+            
+            <!-- Lista de instruções -->
+            <div class="bg-gray-800 p-6 rounded-lg mb-8">
+                <?php renderTable($result); ?>
+            </div>
+
+            <!-- Modal para edição -->
+            <div id="promptModal" class="hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+                <div class="bg-gray-800 p-6 rounded-lg w-full max-w-2xl">
+                    <h2 class="text-xl font-bold text-white mb-4">Editar Instrução</h2>
+                    <form method="POST" id="promptForm">
+                        <input type="hidden" name="id" id="promptId">
+                        <div class="mb-4">
+                            <label for="promptTitulo" class="block text-white mb-2">Título</label>
+                            <input 
+                                type="text" 
+                                name="titulo" 
+                                id="promptTitulo"
+                                class="w-full p-2 rounded bg-gray-700 text-white border border-gray-600"
+                            >
+                        </div>
+                        <div class="mb-4">
+                            <label for="promptIntencao" class="block text-white mb-2">Intenção</label>
+                            <select 
+                                name="intencao" 
+                                id="promptIntencao"
+                                class="w-full p-2 rounded bg-gray-700 text-white border border-gray-600"
+                            >
+                                <option value="0">Geral</option>
+                                <?php foreach (getIntencoes($pdo) as $intencao): ?>
+                                <option value="<?php echo $intencao['id']; ?>">
+                                    <?php echo htmlspecialchars($intencao['titulo']); ?>
+                                </option>
+                                <?php endforeach; ?>
+                            </select>
+                        </div>
+                        <div class="mb-4">
+                            <label for="promptText" class="block text-white mb-2">Prompt</label>
+                            <textarea 
+                                name="prompt" 
+                                id="promptText"
+                                rows="10"
+                                class="w-full p-2 rounded bg-gray-700 text-white border border-gray-600"
+                            ></textarea>
+                        </div>
+                        <div class="mb-4">
+                            <label for="promptReferencia" class="block text-white mb-2">Referência</label>
+                            <input 
+                                type="text" 
+                                name="referencia" 
+                                id="promptReferencia"
+                                class="w-full p-2 rounded bg-gray-700 text-white border border-gray-600"
+                            >
+                        </div>
+                        <div class="flex justify-end space-x-2">
+                            <button 
+                                type="button"
+                                onclick="closePromptModal()"
+                                class="bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded"
+                            >
+                                Cancelar
+                            </button>
+                            <button 
+                                type="submit"
+                                name="edit"
+                                class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+                            >
+                                Salvar
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            <?php renderAddForm($pdo, $selectedIntencao); ?>
+        </div>
+    </div>
+</div>
+
+<script>
+function editPrompt(id, titulo, prompt, referencia, intencao) {
+    document.getElementById('promptId').value = id;
+    document.getElementById('promptTitulo').value = decodeURIComponent(titulo);
+    document.getElementById('promptText').value = decodeURIComponent(prompt);
+    document.getElementById('promptReferencia').value = decodeURIComponent(referencia || '');
+    
+    // Set the intention in the dropdown
+    const intencaoSelect = document.getElementById('promptIntencao');
+    for (let i = 0; i < intencaoSelect.options.length; i++) {
+        if (intencaoSelect.options[i].value == intencao) {
+            intencaoSelect.selectedIndex = i;
+            break;
+        }
+    }
+    
+    document.getElementById('promptModal').classList.remove('hidden');
+}
+
+function closePromptModal() {
+    document.getElementById('promptModal').classList.add('hidden');
+}
+
+// Adiciona listener para fechar o modal quando clicar fora dele
+document.addEventListener('click', function(event) {
+    const modal = document.getElementById('promptModal');
+    const modalContent = modal.querySelector('.bg-gray-800');
+    
+    if (event.target === modal) {
+        closePromptModal();
+    }
+});
+</script>
+
+<?php require_once 'includes/footer.php'; ?>
